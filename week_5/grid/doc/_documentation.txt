@@ -1,0 +1,46 @@
+documentation.txt
+
+<!-- TITLE -->
+Grid
+
+<!-- AUTHOR -->
+Matthew Epler
+
+<!-- DATE -->
+2012
+
+<!-- DESCRIPTION -->
+A Processing Project by Matthew Epler
+Written in October, 2012 as class assignment.
+
+<!-- COMPANY / SCHOOL / AFFILIATION INFO -->
+School = New York University
+Department = Interactive Telecommunications Program
+Course = Printing Code
+Instructor = Rune Madsen
+Semester = Fall, 2012
+
+<!-- HARDWARE -->
+Brand = Apple
+Model = MacBook Air
+Processor = 1.7 GHz Intel Core i5
+Memory = 4GB 1333 MHz DDR3
+
+<!-- SOFTWARE -->
+Mac OSX 10.7.5 (Lion)
+Processing 2.0 beta
+
+<!-- OTHER REQUIREMENTS -->
+
+<!-- DIR -->
+*alt_v :: contains alternative outputs
+*modular_grid_no_overlap :: Rune Madsen's code for creating layout grids in Processing
+
+<!-- NOTES -->
+The grid and module classes are based off of Rune Madsen's original code
+included in this folder as "modular_grid_no_overlap." It runs on the same
+version of Processing and will also work with the last stable release, 
+1.5.1
+
+<!-- CHANGES LOG -->
+10.10.2012 * created by Matthew Epler
