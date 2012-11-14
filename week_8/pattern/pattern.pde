@@ -1,5 +1,6 @@
 
 PVector center, A, B, C, D, E, F, G, H;
+ArrayList edges = new ArrayList();
 int boxSize = 300;
 int halfBox = boxSize/2;
 
@@ -14,34 +15,52 @@ void setup()
 // ---------------------------------- Main Functions //
   setVectors();
   // drawRefs(); // draws a box and xyz guides
-  drawLines();
 
-// ---------------------------------------  Rotation //
+  resetArrayList();
+
+  pushMatrix();
   rotateX( radians( -35 ) );
   rotateY( HALF_PI/2 + radians(8) );
+
+  for( int i = 0; i < 6; i++ )
+  {
+    int ran = floor( random( 0, edges.size() ) );
+    Value thisValue = (Value) edges.get( ran );
+    drawLines( thisValue.num );
+    edges.remove( thisValue );
+  }
+  popMatrix();
+
+// ---------------------------------------  Rotation //
+  
  } 
 
 
 
- void drawLines()
+ void drawLines( int _i )
  {
-  strokeWeight( 15 );
+  strokeWeight( 25 );
   stroke( 1, 1, 0.75 );
-// --------------------------------------------- Top //
-  line( A.x, A.y, A.z, B.x, B.y, B.z ); 
-  line( B.x, B.y, B.z, C.x, C.y, C.z );
-  line( C.x, C.y, C.z, D.x, D.y, D.z );
-  line( D.x, D.y, D.z, A.x, A.y, A.z );
-// ------------------------------------------ Bottom //
-  line( E.x, E.y, E.z, F.x, F.y, F.z ); 
-  line( F.x, F.y, F.z, G.x, G.y, G.z );
-  line( G.x, G.y, G.z, H.x, H.y, H.z );
-  line( H.x, H.y, H.z, E.x, E.y, E.z );
-// ---------------------------------------- Supports //
-  line( A.x, A.y, A.z, E.x, E.y, E.z ); 
-  line( B.x, B.y, B.z, F.x, F.y, F.z );
-  line( C.x, C.y, C.z, G.x, G.y, G.z );
-  line( D.x, D.y, D.z, H.x, H.y, H.z );
+  switch( _i )
+  {
+  // --------------------------------------------- Top //
+    case 0: line( A.x, A.y, A.z, B.x, B.y, B.z ); break;
+    case 1: line( B.x, B.y, B.z, C.x, C.y, C.z ); break;
+    case 2: line( C.x, C.y, C.z, D.x, D.y, D.z ); break;
+    case 3: line( D.x, D.y, D.z, A.x, A.y, A.z ); break;
+
+  // ------------------------------------------ Bottom //
+    case 4: line( E.x, E.y, E.z, F.x, F.y, F.z ); break;
+    case 5: line( F.x, F.y, F.z, G.x, G.y, G.z ); break;
+    case 6: line( G.x, G.y, G.z, H.x, H.y, H.z ); break;
+    case 7: line( H.x, H.y, H.z, E.x, E.y, E.z ); break;
+
+  // ---------------------------------------- Supports //
+    case 8: line( A.x, A.y, A.z, E.x, E.y, E.z ); break;
+    case 9: line( B.x, B.y, B.z, F.x, F.y, F.z ); break;
+    case 10: line( C.x, C.y, C.z, G.x, G.y, G.z ); break;
+    case 11: line( D.x, D.y, D.z, H.x, H.y, H.z ); break;
+  }
  }
 
 
@@ -59,6 +78,22 @@ void setup()
   F = new PVector( center.x + halfBox, center.y + halfBox, center.z + halfBox );
   G = new PVector( center.x + halfBox, center.y + halfBox, center.z - halfBox );
   H = new PVector( center.x - halfBox, center.y + halfBox, center.z - halfBox );
+ }
+
+
+
+ void resetArrayList()
+ {
+  if( edges.size() > 0 )
+    {
+      edges.clear();
+    }
+
+  for( int i = 0; i < 12; i++ )
+    {
+      Value newValue = new Value( i );
+      edges.add( newValue );
+    }
  }
 
 
