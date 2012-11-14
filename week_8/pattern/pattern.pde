@@ -1,8 +1,10 @@
 
 PVector center, A, B, C, D, E, F, G, H;
 ArrayList edges = new ArrayList();
-int boxSize = 300;
+int boxSize = 50;
 int halfBox = boxSize/2;
+float padding = 0.15 * boxSize;
+float move = boxSize*3 + padding*2;
 
 void setup()
 {
@@ -10,7 +12,8 @@ void setup()
   background( 100 );
   colorMode( HSB, 1, 1, 1 );
   noFill();
-  translate( width/2, height/2, 0 );
+  strokeWeight( 5 );
+  stroke( 1, 1, 0.75 );
 
 // ---------------------------------- Main Functions //
   setVectors();
@@ -18,10 +21,24 @@ void setup()
 
   resetArrayList();
 
-  pushMatrix();
-  rotateX( radians( -35 ) );
-  rotateY( HALF_PI/2 + radians(8) );
+  for( int i = 0; i < width; i++ )
+  {
+    PVector pos = new PVector();
+    pos.x = i * move;
+    pos.y = height/2;
+    drawCube( pos );
+  }
 
+ } 
+
+
+ void drawCube( PVector _pos )
+ {
+  resetArrayList();
+  pushMatrix();
+  translate( _pos.x, _pos.y, 0 );
+  rotateX( radians( -30 ) );
+  rotateY( HALF_PI/2 + radians(6) );
   for( int i = 0; i < 6; i++ )
   {
     int ran = floor( random( 0, edges.size() ) );
@@ -30,17 +47,11 @@ void setup()
     edges.remove( thisValue );
   }
   popMatrix();
-
-// ---------------------------------------  Rotation //
-  
- } 
-
+ }
 
 
  void drawLines( int _i )
  {
-  strokeWeight( 25 );
-  stroke( 1, 1, 0.75 );
   switch( _i )
   {
   // --------------------------------------------- Top //
