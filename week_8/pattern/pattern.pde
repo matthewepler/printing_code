@@ -21,14 +21,16 @@ void setup()
 
   resetArrayList();
 
-  for( int i = 0; i < width; i++ )
+  for( int y = 0; y < height; y++ )
   {
-    PVector pos = new PVector();
-    pos.x = i * move;
-    pos.y = height/2;
-    drawCube( pos );
+    for( int x = 0; x < width; x++ )
+    {
+      PVector pos = new PVector();
+      pos.x = x * move;
+      pos.y = y * move;
+      drawCube( pos );
+    }
   }
-
  } 
 
 
