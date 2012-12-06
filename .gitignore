@@ -1,2 +1,5 @@
 *.tif
 /printing-code-2012/**/*
+*.ai
+*.png
+*.pdf

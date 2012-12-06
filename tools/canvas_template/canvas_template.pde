@@ -20,7 +20,7 @@ float cutter = 0.15;
 
 void setup(){
  size( int( canvas_width*cutter ), int( canvas_height*cutter ) );
- canvas = createGraphics( canvas_width, canvas_height ); 
+ canvas = createGraphics( canvas_width, canvas_height, P2D ); 
  canvas.beginDraw();
  canvas.colorMode( HSB, 1, 1, 1 );
  canvas.smooth();

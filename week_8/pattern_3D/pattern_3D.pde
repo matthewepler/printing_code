@@ -8,7 +8,8 @@ float move = boxSize*3 + padding*2;
 
 void setup()
 {
-  size( 1000, 1000, P3D );
+  size( 1000, 800, P3D );
+  ortho(0, width, 0, height, -100, 300);
   background( 100 );
   colorMode( HSB, 1, 1, 1 );
   noFill();
@@ -18,9 +19,8 @@ void setup()
 // ---------------------------------- Main Functions //
   setVectors();
   // drawRefs(); // draws a box and xyz guides
-
   resetArrayList();
-
+  
   for( int y = 0; y < height; y++ )
   {
     for( int x = 0; x < width; x++ )
